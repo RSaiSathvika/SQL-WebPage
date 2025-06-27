@@ -11,39 +11,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Your SQL Cheat Sheet</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
-        }
-        .container-card {
-            background-color: #ffffff;
-            border-radius: 1rem; /* rounded-2xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
-            padding: 2.5rem; /* p-10 */
-            max-width: 28rem; /* max-w-md */
-            width: 90%; /* Responsive width */
-        }
-        .download-button {
-            background-color: #10b981; /* bg-emerald-500 */
-            color: #ffffff;
-            border-radius: 0.75rem; /* rounded-xl */
-            padding: 0.875rem 1.75rem; /* px-7 py-3.5 */
-            font-weight: 600; /* font-semibold */
-            display: inline-flex; /* Use flex for icon alignment */
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem; /* Space between icon and text */
-            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
-        }
-        .download-button:hover {
-            background-color: #059669; /* bg-emerald-600 */
-            transform: translateY(-1px);
-        }
-        .download-button:active {
-            transform: translateY(0);
+            background-color: #f3f4f6; /* Light gray background */
         }
     </style>
 </head>
@@ -52,29 +25,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBRHTV97"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-    <div class="container-card text-center">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">Your SQL Cheat Sheet is Ready!</h1>
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-200 text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Almost There!</h1>
         <p class="text-gray-600 mb-8">
-            Click the button below to download your comprehensive SQL Basics Cheat Sheet instantly.
+            Click the button below to download your free SQL Basics Cheat Sheet.
         </p>
-        <a href="https://github.com/RSaiSathvika/SQL-WebPage/blob/main/A4%20SQL%20Basics%20Cheat%20Sheet.pdf"
-           download="https://github.com/RSaiSathvika/SQL-WebPage/blob/main/A4%20SQL%20Basics%20Cheat%20Sheet.pdf"
-           class="download-button"
-           onclick="navigateToThankYou()">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H5a2 2 0 01-2-2v-8a2 2 0 012-2h5l2-2h4l2 2h5a2 2 0 012 2v8a2 2 0 01-2 2z"></path>
-            </svg>
-            Download Now
+
+        <a id="downloadButton"
+           href="https://learnsql.com/blog/sql-basics-cheat-sheet/sql-basics-cheat-sheet-a4.pdf"
+           target="_blank"
+           class="inline-block bg-green-600 text-white py-3 px-8 rounded-lg text-lg font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-150 ease-in-out shadow-md">
+            Download SQL Cheat Sheet
         </a>
+
+        <p class="text-gray-500 mt-8">
+            Once downloaded, you'll be redirected to our thank you page.
+        </p>
     </div>
 
     <script>
-        function navigateToThankYou() {
-            // Introduce a small delay to allow the download to initiate (optional, but good UX)
-            setTimeout(() => {
-                window.location.href = 'thankyou.html';
-            }, 500); // Navigate to thank you page after 0.5 seconds
+        // Initialize or retrieve tracking data from localStorage
+        let trackingData = JSON.parse(localStorage.getItem('trackingData')) || {
+            pageVisits: {},
+            formSubmissions: 0,
+            downloadClicks: 0,
+            successfulDownloads: 0
+        };
+
+        // Function to track page visits
+        function trackPageVisit(pageName) {
+            trackingData.pageVisits[pageName] = (trackingData.pageVisits[pageName] || 0) + 1;
+            console.log(`Page visit tracked: ${pageName}. Total visits: ${trackingData.pageVisits[pageName]}`);
+            localStorage.setItem('trackingData', JSON.stringify(trackingData));
         }
+
+        // Track page visit for download.html
+        trackPageVisit('download.html');
+
+        const downloadButton = document.getElementById('downloadButton');
+        downloadButton.addEventListener('click', function() {
+            // Track download button click
+            trackingData.downloadClicks++;
+            console.log('Download button clicked!');
+            console.log(`Total download clicks: ${trackingData.downloadClicks}`);
+            localStorage.setItem('trackingData', JSON.stringify(trackingData));
+
+            // In a real scenario, you might have a server-side endpoint
+            // that serves the file and then redirects. Since we're directly
+            // linking to a PDF, we'll simulate the "successful download"
+            // by incrementing the count and then immediately redirecting
+            // to the thank you page after a short delay.
+            // A more robust solution would involve checking if the file
+            // actually started downloading or was accessed.
+
+            // Simulate successful download after a short delay
+            setTimeout(() => {
+                trackingData.successfulDownloads++;
+                console.log('Simulated successful file access/download!');
+                console.log(`Total successful downloads: ${trackingData.successfulDownloads}`);
+                localStorage.setItem('trackingData', JSON.stringify(trackingData));
+                window.location.href = 'thankyou.html';
+            }, 500); // Redirect after 0.5 seconds
+        });
     </script>
 </body>
 </html>
