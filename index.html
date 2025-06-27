@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download SQL Cheat Sheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        /* Custom styles for better aesthetics */
+        .container-card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* rounded-2xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            padding: 2.5rem; /* p-10 */
+            max-width: 28rem; /* max-w-md */
+            width: 90%; /* Responsive width */
+        }
+        .input-field {
+            border: 1px solid #d1d5db; /* border-gray-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.75rem 1rem; /* px-4 py-3 */
+            width: 100%;
+            transition: all 0.2s ease-in-out;
+        }
+        .input-field:focus {
+            border-color: #2563eb; /* ring-blue-500, focus:ring-2 */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        .submit-button {
+            background-color: #2563eb; /* bg-blue-600 */
+            color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 0.875rem 1.75rem; /* px-7 py-3.5 */
+            font-weight: 600; /* font-semibold */
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+            width: 100%;
+        }
+        .submit-button:hover {
+            background-color: #1d4ed8; /* bg-blue-700 */
+            transform: translateY(-1px);
+        }
+        .submit-button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="container-card text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Unlock Your SQL Potential!</h1>
+        <p class="text-gray-600 mb-8">
+            Get your comprehensive SQL Basics Cheat Sheet – a quick reference for all essential SQL commands and concepts.
+            Just enter your details below to get instant access!
+        </p>
+        <form id="downloadForm" class="space-y-6" onsubmit="navigateToDownload(event)">
+            <div>
+                <label for="name" class="sr-only">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required
+                       class="input-field">
+            </div>
+            <div>
+                <label for="email" class="sr-only">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email Address" required
+                       class="input-field">
+            </div>
+            <button type="submit" class="submit-button">
+                Get Your Cheat Sheet Now
+            </button>
+        </form>
+        <p class="text-sm text-gray-500 mt-6">
+            We respect your privacy. Your information will not be shared.
+        </p>
+    </div>
+
+    <script>
+        function navigateToDownload(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+
+            // In a real application, you would send the form data to a server here.
+            // For this example, we simply navigate to the download page.
+            window.location.href = 'download.html';
+        }
+    </script>
+</body>
+</html>
