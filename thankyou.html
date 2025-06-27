@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .container-card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* rounded-2xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            padding: 2.5rem; /* p-10 */
+            max-width: 28rem; /* max-w-md */
+            width: 90%; /* Responsive width */
+        }
+        .home-button {
+            background-color: #6b7280; /* bg-gray-500 */
+            color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 0.75rem 1.5rem; /* px-6 py-3 */
+            font-weight: 600; /* font-semibold */
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+        }
+        .home-button:hover {
+            background-color: #4b5563; /* bg-gray-600 */
+            transform: translateY(-1px);
+        }
+        .home-button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="container-card text-center">
+        <h1 class="text-3xl font-bold text-green-600 mb-4">Thank You!</h1>
+        <p class="text-gray-700 mb-8">
+            Your SQL Basics Cheat Sheet has been downloaded successfully. We hope it helps you on your SQL journey!
+        </p>
+        <p class="text-gray-600 mb-6">
+            Check your downloads folder for the PDF.
+        </p>
+        <a href="index.html" class="home-button">
+            Back to Home
+        </a>
+    </div>
+</body>
+</html>
